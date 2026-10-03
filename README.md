@@ -1,15 +1,17 @@
 # Signal Date
 
-Signal Date is a static, evidence-first demonstration of agents making introductions from two public sources per person: LinkedIn and Instagram.
+Signal Date is an evidence-first demonstration of agents making introductions from two public sources per person: LinkedIn and Instagram.
+
+**Live demo:** https://signal-date-9k0a8c2po-abhinav0311.vercel.app
 
 ## What works
 
-- Browse a seeded cohort of 25 profiles.
+- Browse a seeded cohort of 25 profiles, with the visible source-check state for every pair.
 - Inspect an agent profile with observed source cues, inferences, and unknowns separated.
 - Open a source ledger with the two supplied official links.
 - Watch a controlled, unsent agent-date simulation.
 - View ranked matches and the reason behind every placement.
-- Add two URLs. URL validation works locally; the record stays blocked until a permitted source adapter returns evidence.
+- Add two URLs. The Vercel deployment validates HTTPS profile URLs, reads each public source through permitted Apify Actors, and requires an exact returned name match before it creates an agent.
 
 ## Run locally
 
@@ -29,4 +31,6 @@ The adapter passes `profileUrls` to the LinkedIn Actor and `usernames` to the In
 
 ## Deployment
 
-Because this is a static site, deploy the `AI` folder with GitHub Pages, Vercel, Netlify, or any static host.
+The demo is deployed on Vercel. Its `api/analyse.js` serverless function holds `APIFY_API_TOKEN` as a sensitive server-only environment variable for Production and Preview. Each individual platform run is capped at $0.03.
+
+GitHub Pages or another static host can render the cohort, but cannot provide the live link-analysis feature without an equivalent server-side adapter and secret configuration.
