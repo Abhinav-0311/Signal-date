@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3ec" />
+    <meta name="description" content="Signal Date makes transparent, evidence-backed agent introductions from public LinkedIn and Instagram sources." />
+    <title>Signal Date — evidence-led introductions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#cohort" aria-label="Signal Date home">
+        <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+          <circle class="brand-orbit brand-orbit-left" cx="13" cy="18" r="9.5" />
+          <circle class="brand-orbit brand-orbit-right" cx="23" cy="18" r="9.5" />
+          <circle class="brand-core" cx="18" cy="18" r="3.2" />
+        </svg>
+        <span>Signal Date</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#cohort">Cohort</a>
+        <a href="#how-it-works">Method</a>
+        <button class="nav-action" type="button" data-open-add>Add sources</button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Agent introductions, with receipts</p>
+          <h1 id="hero-title">A thoughtful introduction starts with what’s actually there.</h1>
+          <p class="hero-lede">Each person has one agent. It reads only their public LinkedIn and Instagram, keeps its uncertainty visible, then makes a grounded introduction.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#cohort">Meet the cohort <span aria-hidden="true">↓</span></a>
+            <button class="button button-secondary" type="button" data-open-add>Try two links</button>
+          </div>
+        </div>
+        <aside class="hero-note" aria-label="How Signal Date works">
+          <span class="note-index">01 — 04</span>
+          <p>Two sources in.<br />A traceable introduction out.</p>
+          <ol>
+            <li>Public links</li>
+            <li>Evidence ledger</li>
+            <li>Agent date</li>
+            <li>Ranked fits</li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="trust-strip" aria-label="Product boundaries">
+        <span>25 seeded people</span>
+        <span>Two sources each</span>
+        <span>Simulated, never sent</span>
+        <span>Unknowns stay unknown</span>
+      </section>
+
+      <section class="cohort-section" id="cohort" aria-labelledby="cohort-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The seeded cohort</p>
+            <h2 id="cohort-title">Choose someone to inspect their agent.</h2>
+          </div>
+          <div class="cohort-tools">
+            <label class="search-field" for="cohort-search">
+              <span class="sr-only">Search the cohort</span>
+              <input id="cohort-search" type="search" placeholder="Search people or interests" autocomplete="off" />
+            </label>
+            <span id="cohort-count" class="count" aria-live="polite"></span>
+          </div>
+        </div>
+        <div id="cohort-grid" class="cohort-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="method-section" id="how-it-works" aria-labelledby="method-title">
+        <div>
+          <p class="eyebrow">A small, inspectable harness</p>
+          <h2 id="method-title">The agent doesn’t pretend to know more than it does.</h2>
+        </div>
+        <div class="method-list">
+          <article>
+            <span>01</span>
+            <h3>Read</h3>
+            <p>Facts and cues remain attached to their LinkedIn or Instagram source.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Suggest</h3>
+            <p>It proposes a low-pressure activity from evidence the two people actually share.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Rank</h3>
+            <p>Every match shows shared signals, a potential tension, and how confident the agent is.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="person-dialog" class="person-dialog" aria-labelledby="profile-name">
+      <div id="dialog-content"></div>
+    </dialog>
+
+    <dialog id="add-dialog" class="add-dialog" aria-labelledby="add-title">
+      <form id="add-form" method="dialog" novalidate>
+        <div class="dialog-topline">
+          <p class="eyebrow">Add a person</p>
+          <button class="icon-button" type="button" data-close-add aria-label="Close add sources dialog">×</button>
+        </div>
+        <h2 id="add-title">Start with the two public links.</h2>
+        <p class="dialog-copy">Signal Date checks the URL shape first. A live source may still be unavailable if the platform blocks access or the profile is private.</p>
+        <label for="new-name">Name <input id="new-name" name="name" required placeholder="Their name" /></label>
+        <label for="linkedin-url">LinkedIn public profile <input id="linkedin-url" name="linkedin" type="url" required placeholder="https://www.linkedin.com/in/..." /></label>
+        <label for="instagram-url">Instagram public profile <input id="instagram-url" name="instagram" type="url" required placeholder="https://www.instagram.com/..." /></label>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+        <button class="button button-primary" type="submit">Check these sources</button>
+      </form>
+    </dialog>
+
+    <template id="empty-template">
+      <div class="empty-state"><p>No one matches that search.</p><button class="text-button" type="button" data-clear-search>Clear search</button></div>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
