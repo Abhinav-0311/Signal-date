@@ -69,6 +69,10 @@ function hasVerifiedSources(person) {
   return person.status === "seeded" || person.status === "verified";
 }
 
+function comparableName(value) {
+  return value.toLocaleLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
 function topicsFromEvidence(text) {
   return sourceTopics.filter(topic => new RegExp(`\\b${topic}\\b`, "i").test(text)).slice(0, 4);
 }
@@ -147,7 +151,7 @@ function scoreMatch(a, b) {
 
 function rankingsFor(person) {
   return people
-    .filter(candidate => candidate.id !== person.id && hasVerifiedSources(candidate))
+    .filter(candidate => candidate.id !== person.id && comparableName(candidate.name) !== comparableName(person.name) && hasVerifiedSources(candidate))
     .map(candidate => ({ candidate, score: scoreMatch(person, candidate), shared: sharedInterests(person, candidate) }))
     .sort((a, b) => b.score - a.score || a.candidate.name.localeCompare(b.candidate.name))
     .slice(0, 5);
