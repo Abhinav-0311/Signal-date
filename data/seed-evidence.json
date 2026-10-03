@@ -44,20 +44,20 @@
     }
   },
   "person-5": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/sahillavingia",
-      "cue": "Building products for fun and profit"
+      "url": "https://www.linkedin.com/in/nathanbarry",
+      "cue": ""
     },
     "instagram": {
-      "url": "https://www.instagram.com/sahillavingia",
-      "cue": ""
+      "url": "https://www.instagram.com/nathanbarry",
+      "cue": "Founder of @kit. Helping creators earn a living. Podcast: The Nathan Barry Show."
     }
   },
   "person-6": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/marquesbrownlee",
+      "url": "https://www.linkedin.com/in/mkbhd",
       "cue": ""
     },
     "instagram": {
@@ -77,14 +77,14 @@
     }
   },
   "person-8": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/mattdavella",
-      "cue": ""
+      "url": "https://www.linkedin.com/in/thechrisdo",
+      "cue": "Success requires all of you. I’ll make the introductions. Unbland Yourself."
     },
     "instagram": {
-      "url": "https://www.instagram.com/mattdavella",
-      "cue": "Filmmaker, YouTuber, guy who wears the same shirt every day. Helping creators make meaningful stuff without sacrificing their soul to the algorithm."
+      "url": "https://www.instagram.com/thechrisdo",
+      "cue": "Success requires all of you. Allow me to make the introductions. Founder @thefuturishere."
     }
   },
   "person-9": {
@@ -165,14 +165,14 @@
     }
   },
   "person-16": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/nasdaily",
+      "url": "https://www.linkedin.com/in/justinkan",
       "cue": ""
     },
     "instagram": {
-      "url": "https://www.instagram.com/nasdaily",
-      "cue": "Building @nas.com_ to help businesses grow with AI. \ncontact: ea@nas.com"
+      "url": "https://www.instagram.com/justinkan",
+      "cue": "Twitch cofounder, investor, and cofounder of Stash and Rye."
     }
   },
   "person-17": {
@@ -187,14 +187,14 @@
     }
   },
   "person-18": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/fortelabs",
-      "cue": ""
+      "url": "https://www.linkedin.com/in/adammgrant",
+      "cue": "Organizational psychologist at Wharton, #1 NYT bestselling author, host of Re:Thinking."
     },
     "instagram": {
-      "url": "https://www.instagram.com/fortelabs",
-      "cue": ""
+      "url": "https://www.instagram.com/adamgrant",
+      "cue": "Organizational psychologist @whartonschool. #1 NYT bestselling author. TED podcast: Re:Thinking."
     }
   },
   "person-19": {
@@ -253,14 +253,14 @@
     }
   },
   "person-24": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/prakharkepravachan",
+      "url": "https://www.linkedin.com/in/ryanholiday",
       "cue": ""
     },
     "instagram": {
-      "url": "https://www.instagram.com/prakharkepravachan",
-      "cue": "Hi. I have changed my username now.\nYou can find me now on @prvkhvr and @pgxpodcast"
+      "url": "https://www.instagram.com/ryanholiday",
+      "cue": "#1 NYT Bestselling Author. Stoic Virtues Series. @dailystoic and @paintedporchbookshop."
     }
   },
   "person-25": {
