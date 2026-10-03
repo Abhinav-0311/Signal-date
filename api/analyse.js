@@ -49,7 +49,7 @@ function namesMatch(linkedinName, instagramName) {
   const left = normalizedName(linkedinName);
   const right = normalizedName(instagramName);
   if (!left || !right) return false;
-  return left === right;
+  return left === right || right.startsWith(left) || left.startsWith(right);
 }
 
 async function runActor({ actorId, input, token }) {

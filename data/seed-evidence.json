@@ -88,14 +88,14 @@
     }
   },
   "person-9": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/halataha",
+      "url": "https://www.linkedin.com/in/marieforleo",
       "cue": ""
     },
     "instagram": {
-      "url": "https://www.instagram.com/halataha",
-      "cue": "\"واجعل لي لسان صدق في الآخرين\""
+      "url": "https://www.instagram.com/marieforleo",
+      "cue": "#1 NYTimes Bestselling Author 🍊 Build a business and life you love. CEO + Founder #BSchool #TimeGenius"
     }
   },
   "person-10": {
@@ -176,14 +176,14 @@
     }
   },
   "person-17": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/david_perell",
-      "cue": ""
+      "url": "https://www.linkedin.com/in/lewishowes",
+      "cue": "3x New York Times Bestselling Author | Top 25 Global Podcast, The School of Greatness | 20+ Million Global Followers | President of Los Angeles Handball Club"
     },
     "instagram": {
-      "url": "https://www.instagram.com/david_perell",
-      "cue": ""
+      "url": "https://www.instagram.com/lewishowes",
+      "cue": "Host of The School of @greatness. 3x NY Times Bestseller. Dream = LA 2028 Olympics in Handball."
     }
   },
   "person-18": {
@@ -220,14 +220,14 @@
     }
   },
   "person-21": {
-    "verified": false,
+    "verified": true,
     "linkedin": {
-      "url": "https://www.linkedin.com/in/radhikaguptarich",
+      "url": "https://www.linkedin.com/in/noahkagan",
       "cue": ""
     },
     "instagram": {
-      "url": "https://www.instagram.com/radhikaguptarich",
-      "cue": ""
+      "url": "https://www.instagram.com/noahkagan",
+      "cue": "Chief Sumo of @AppSumo. Employee #30 at Facebook. Helping entrepreneurs."
     }
   },
   "person-22": {

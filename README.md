@@ -11,7 +11,7 @@ Signal Date is an evidence-first demonstration of agents making introductions fr
 - Open a source ledger with the two supplied official links.
 - Watch a controlled, unsent agent-date simulation.
 - View ranked matches and the reason behind every placement.
-- Add two URLs. The Vercel deployment validates HTTPS profile URLs, reads each public source through permitted Apify Actors, and requires an exact returned name match before it creates an agent.
+- Add two URLs. The Vercel deployment validates HTTPS profile URLs, reads each public source through permitted Apify Actors, and requires matching returned full names before it creates an agent. A platform-provided descriptor after that same name is allowed.
 
 ## Run locally
 
