@@ -1,0 +1,277 @@
+{
+  "person-1": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/aliabdaal",
+      "cue": "I’m Ali, a YouTuber, podcaster, author of New York Times and Sunday Times bestseller…"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/aliabdaal",
+      "cue": "👨‍⚕️ Doctor turned Entrepreneur\n📚 NYT Bestselling Book: Feel-Good Productivity\n💻 @lifestylebusinessacademy\n👇Give @superfocus.me a go"
+    }
+  },
+  "person-2": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/warikoo",
+      "cue": "Founder @WebVeda, @IndiaGeniusChallenge @Monzy • 6X Bestselling Author • 16M+ community"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/ankurwarikoo",
+      "cue": "Founder: WebVeda | India Genius Challenge | Monzy\nLove learning, teaching and sharing ❤️"
+    }
+  },
+  "person-3": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/kunalshah1",
+      "cue": "Head - WhatsApp, Founder - CRED, curious."
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/kunalshah1",
+      "cue": ""
+    }
+  },
+  "person-4": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/gauravmunjal",
+      "cue": "Avid participant and proponent of the Gig Economy"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/gauravmunjal",
+      "cue": "Unacademy, Airlearn, Graphy, PrepLadder"
+    }
+  },
+  "person-5": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/sahillavingia",
+      "cue": "Building products for fun and profit"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/sahillavingia",
+      "cue": ""
+    }
+  },
+  "person-6": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/marquesbrownlee",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/marquesbrownlee",
+      "cue": "I was born to play games and eat pizza. Egypt."
+    }
+  },
+  "person-7": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/garyvaynerchuk",
+      "cue": "Chairman – VaynerX, CEO – VaynerMedia, Creator – VeeFriends"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/garyvee",
+      "cue": "✈️CEO/Chairman @vaynermedia\n🐈‍⬛CEO/Founder   @veefriends\n🔮Investor FB,Venmo,Twitter,Liquid Death\n📲Text me 1-212-931-5731\n🍱@vcrgroup partner"
+    }
+  },
+  "person-8": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/mattdavella",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/mattdavella",
+      "cue": "Filmmaker, YouTuber, guy who wears the same shirt every day. Helping creators make meaningful stuff without sacrificing their soul to the algorithm."
+    }
+  },
+  "person-9": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/halataha",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/halataha",
+      "cue": "\"واجعل لي لسان صدق في الآخرين\""
+    }
+  },
+  "person-10": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/alexhormozi",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/hormozi",
+      "cue": "Founder Acquisition.com, Co-Founder Skool.com.\nI talk about scaling businesses.\nGet your free scaling roadmap 👇"
+    }
+  },
+  "person-11": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/leilahormozi",
+      "cue": "Leila Hormozi is an entrepreneur, investor, and Chairwoman of Acquisition.com, a $200M+…"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/leilahormozi",
+      "cue": "Founder & Chairwoman @acquisition\nBuilding the business that builds businesses\n⬇️Get Our Free Five Scaling Frameworks⬇️"
+    }
+  },
+  "person-12": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/sahilbloom",
+      "cue": "NYT Bestselling Author | Entrepreneur | Investor"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/sahilbloom",
+      "cue": "New York Times Bestselling Author of The 5 Types of Wealth. Founder @wildromanofficial. Creating things I’d want to consume."
+    }
+  },
+  "person-13": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/justinwelsh",
+      "cue": "Writer & Entrepreneur. I write The Saturday Essay for 200,000+ ambitious people living and working on their own terms."
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/thejustinwelsh",
+      "cue": "Writer & Entrepreneur. I write The Saturday Essay for 200,000+ ambitious people living and working on their own terms."
+    }
+  },
+  "person-14": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/simonsinek",
+      "cue": "Optimist, New York Times bestselling author of \"Start with Why\" and \"The Infinite Game\", and founder of The Optimism Company"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/simonsinek",
+      "cue": "To run & jump & laugh & cry & love & hope & imagine...to experience as much as I can for one purpose: to inspire.🇺🇦 \nFounder of The Optimism Company"
+    }
+  },
+  "person-15": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/jayshetty",
+      "cue": "I’m a proven technology leader, versatile architect and entrepreneur with 20+ years of…"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/jayshetty",
+      "cue": "Author,Podcaster,Speaker,Coach\n#1 @nytimes \n🎙️ @jayshettypodcast \n🎬 @perfectstrangersmedia \n🫧 @drinkjuni \n🧘‍♀️ @calm"
+    }
+  },
+  "person-16": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/nasdaily",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/nasdaily",
+      "cue": "Building @nas.com_ to help businesses grow with AI. \ncontact: ea@nas.com"
+    }
+  },
+  "person-17": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/david_perell",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/david_perell",
+      "cue": ""
+    }
+  },
+  "person-18": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/fortelabs",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/fortelabs",
+      "cue": ""
+    }
+  },
+  "person-19": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/neuranne",
+      "cue": "I'm a neuroscientist at King's College London investigating the neurodevelopment of…"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/neuranne",
+      "cue": "• Neuroscientist @kingsioppn\n• Author of Tiny Experiments (order now!)\n• 130k people read the Ness Labs newsletter 👇"
+    }
+  },
+  "person-20": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/varunmayya",
+      "cue": "Builder, hacker, content creator, idiot"
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/varunmayya",
+      "cue": ""
+    }
+  },
+  "person-21": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/radhikaguptarich",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/radhikaguptarich",
+      "cue": ""
+    }
+  },
+  "person-22": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/shradha-khapra",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/shradhakhapra",
+      "cue": "Founder - @officialapnacollege | 10Mn+\nEx - Microsoft, DRDO, Google SPS\n✉️ partnerships@apnacollege.in\n🏆 No.1 for Tech Placement Preparation👇"
+    }
+  },
+  "person-23": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/dhattarwalaman",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/amandhattarwal",
+      "cue": "Entrepreneur by chance, learner by choice."
+    }
+  },
+  "person-24": {
+    "verified": false,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/prakharkepravachan",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/prakharkepravachan",
+      "cue": "Hi. I have changed my username now.\nYou can find me now on @prvkhvr and @pgxpodcast"
+    }
+  },
+  "person-25": {
+    "verified": true,
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/sandeepmaheshwari",
+      "cue": ""
+    },
+    "instagram": {
+      "url": "https://www.instagram.com/sandeepmaheshwari",
+      "cue": ""
+    }
+  }
+}

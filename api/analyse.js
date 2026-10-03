@@ -24,6 +24,24 @@ function extractEvidence(item, platform) {
   return snippets.map(text => ({ platform, text }));
 }
 
+function profileName(item, platform) {
+  const fields = platform === "linkedin"
+    ? ["full_name", "name"]
+    : ["fullName", "full_name", "name"];
+  return fields.map(field => firstText(item?.[field], 120)).find(Boolean) || "";
+}
+
+function normalizedName(value) {
+  return value.toLocaleLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function namesMatch(linkedinName, instagramName) {
+  const left = normalizedName(linkedinName);
+  const right = normalizedName(instagramName);
+  if (!left || !right) return false;
+  return left === right;
+}
+
 async function runActor({ actorId, input, token }) {
   if (!actorId) throw new Error("The selected source adapter is not configured.");
   const apiActorId = actorId.replace("/", "~");
@@ -63,7 +81,12 @@ export default async function handler(req, res) {
       ...extractEvidence(instagramItems[0], "instagram")
     ];
     if (!evidence.length) return res.status(422).json({ error: "The source adapter returned no readable profile evidence." });
-    return res.status(200).json({ evidence });
+    const linkedinName = profileName(linkedinItems[0], "linkedin");
+    const instagramName = profileName(instagramItems[0], "instagram");
+    if (!namesMatch(linkedinName, instagramName)) {
+      return res.status(422).json({ error: "The public source pair could not pass the identity name-match check." });
+    }
+    return res.status(200).json({ evidence, identity: { matched: true } });
   } catch (error) {
     return res.status(502).json({ error: error.message || "Source adapter failed." });
   }

@@ -36,7 +36,13 @@ const linkedInSlugs = {
   "Sahil Lavingia": "sahillavingia",
   "Marques Brownlee": "mkbhd",
   "Gary Vaynerchuk": "garyvaynerchuk",
-  "Matt D'Avella": "matt-d-avella-bb70a5390"
+  "Matt D'Avella": "matt-d-avella-bb70a5390",
+  "Justin Welsh": "justinwelsh",
+  "Nuseir Yassin": "nyassin",
+  "David Perell": "davidperell",
+  "Tiago Forte": "tiagoforte",
+  "Radhika Gupta": "radhikagupta2",
+  "Shradha Khapra": "shradha-khapra"
 };
 
 const people = cohortRows.map((row, index) => ({
@@ -52,12 +58,48 @@ const people = cohortRows.map((row, index) => ({
   unknowns: row[8],
   linkedin: `https://www.linkedin.com/in/${linkedInSlugs[row[0]] || row[2]}/`,
   instagram: `https://www.instagram.com/${row[2]}/`,
-  status: "seeded"
+  status: "checking"
 }));
+
+const sourceTopics = ["writing", "learning", "technology", "design", "education", "business", "books", "health", "travel", "film", "podcasts", "fitness", "investing", "leadership", "community", "photography"];
+
+function hasVerifiedSources(person) {
+  return person.status === "seeded" || person.status === "verified";
+}
+
+function topicsFromEvidence(text) {
+  return sourceTopics.filter(topic => new RegExp(`\\b${topic}\\b`, "i").test(text)).slice(0, 4);
+}
+
+async function hydrateSeedEvidence() {
+  try {
+    const response = await fetch("data/seed-evidence.json");
+    if (!response.ok) throw new Error("Seed evidence is unavailable.");
+    const evidence = await response.json();
+    people.forEach(person => {
+      const record = evidence[person.id];
+      if (!record) { person.status = "blocked"; return; }
+      if (record.linkedin?.url) person.linkedin = record.linkedin.url;
+      if (record.instagram?.url) person.instagram = record.instagram.url;
+      const sourceText = [record.linkedin?.cue, record.instagram?.cue].filter(Boolean).join(" ");
+      const derivedTopics = topicsFromEvidence(sourceText);
+      if (derivedTopics.length) person.interests = derivedTopics;
+      if (record.linkedin?.cue) person.linkedinEvidence = record.linkedin.cue;
+      if (record.instagram?.cue) person.instagramEvidence = record.instagram.cue;
+      person.status = record.verified ? "seeded" : "blocked";
+      if (!record.verified) person.unknowns = "This source pair did not pass the name-match check. It stays out of rankings until an operator verifies both public profiles refer to the same person.";
+    });
+  } catch {
+    people.forEach(person => { person.status = "blocked"; person.unknowns = "Seed evidence could not be loaded, so this profile cannot be ranked or simulated."; });
+  }
+  renderGrid(search.value);
+}
 
 const grid = document.querySelector("#cohort-grid");
 const search = document.querySelector("#cohort-search");
 const count = document.querySelector("#cohort-count");
+const verifiedCount = document.querySelector("#verified-count");
+const reviewCount = document.querySelector("#review-count");
 const personDialog = document.querySelector("#person-dialog");
 const dialogContent = document.querySelector("#dialog-content");
 const addDialog = document.querySelector("#add-dialog");
@@ -72,6 +114,10 @@ function renderGrid(query = "") {
   const term = query.trim().toLowerCase();
   const filtered = people.filter(person => `${person.name} ${person.role} ${person.interests.join(" ")}`.toLowerCase().includes(term));
   count.textContent = `${filtered.length} of ${people.length}`;
+  const verified = people.filter(hasVerifiedSources).length;
+  const inReview = people.filter(person => person.status === "blocked" || person.status === "checking").length;
+  verifiedCount.textContent = `${verified} verified source ${verified === 1 ? "pair" : "pairs"}`;
+  reviewCount.textContent = inReview ? `${inReview} pairs need review` : "All source pairs reviewed";
   grid.innerHTML = "";
   if (!filtered.length) {
     grid.append(document.querySelector("#empty-template").content.cloneNode(true));
@@ -82,7 +128,8 @@ function renderGrid(query = "") {
     card.type = "button";
     card.className = "person-card";
     card.dataset.personId = person.id;
-    card.innerHTML = `<span class="avatar" aria-hidden="true">${initials(person.name)}</span><h3>${person.name}</h3><p>${person.role}</p><span class="card-meta">${person.status === "seeded" ? "source pair linked" : "source check blocked"}</span>`;
+    const sourceState = hasVerifiedSources(person) ? "source pair verified" : person.status === "checking" ? "checking sources" : "source check blocked";
+    card.innerHTML = `<span class="avatar" aria-hidden="true">${initials(person.name)}</span><h3>${person.name}</h3><p>${person.role}</p><span class="card-meta">${sourceState}</span>`;
     grid.append(card);
   });
 }
@@ -100,7 +147,7 @@ function scoreMatch(a, b) {
 
 function rankingsFor(person) {
   return people
-    .filter(candidate => candidate.id !== person.id && candidate.status === "seeded")
+    .filter(candidate => candidate.id !== person.id && hasVerifiedSources(candidate))
     .map(candidate => ({ candidate, score: scoreMatch(person, candidate), shared: sharedInterests(person, candidate) }))
     .sort((a, b) => b.score - a.score || a.candidate.name.localeCompare(b.candidate.name))
     .slice(0, 5);
@@ -125,7 +172,7 @@ function dateIdea(person, match) {
 
 function renderProfile(person, tab = "profile") {
   const matches = rankingsFor(person);
-  const topMatch = matches[0]?.candidate;
+  const topMatch = hasVerifiedSources(person) ? matches[0]?.candidate : null;
   const common = topMatch ? sharedInterests(person, topMatch) : [];
   const tabContent = {
     profile: `<section class="agent-summary"><h3>What the agent can reasonably say</h3><p>${person.summary}</p></section><div class="tag-list">${person.interests.map(tag => `<span class="tag">${tag}</span>`).join("")}<span class="tag inferred">${person.energy} social energy</span></div><div class="evidence-list"><article class="evidence-item"><span class="source-label">LinkedIn · source cue</span><p>${person.linkedinEvidence}</p></article><article class="evidence-item"><span class="source-label">Instagram · source cue</span><p>${person.instagramEvidence}</p></article></div><p class="unknowns"><strong>Unknown:</strong> ${person.unknowns}</p><div class="profile-actions"><button class="button button-primary" type="button" data-tab="date">Watch an agent date</button><button class="button button-secondary" type="button" data-tab="rankings">See their rankings</button></div>`,
@@ -133,7 +180,9 @@ function renderProfile(person, tab = "profile") {
     rankings: `<section class="rankings"><div class="agent-summary"><h3>Fits, with reasons</h3><p>The score is an explanation aid, not a prediction. It gives most weight to shared observed cues and lowers confidence when the evidence is thin.</p></div>${matches.map((match, index) => `<article class="ranking-row"><span class="rank">${String(index + 1).padStart(2, "0")}</span><h3>${match.candidate.name}<br /><small>${match.candidate.role}</small></h3><p>${match.shared.length ? `Shared signal: ${match.shared.join(", ")}.` : "No direct shared interest; ranked from interaction style only, so confidence is limited."}</p><span class="score">${match.score}%</span></article>`).join("")}</section>`,
     sources: `<section class="source-pane"><a href="${person.linkedin}" target="_blank" rel="noreferrer"><span>Official source 01 · LinkedIn</span>${person.linkedin}</a><a href="${person.instagram}" target="_blank" rel="noreferrer"><span>Official source 02 · Instagram</span>${person.instagram}</a><p class="unknowns"><strong>Source rule:</strong> this agent may use only the two links above. If a source is private, blocked, or cannot be read through a permitted provider, the result remains unavailable.</p></section>`
   };
-  dialogContent.innerHTML = `<div class="profile-shell"><aside class="profile-aside"><p class="eyebrow">${person.status === "seeded" ? "Seeded demonstration profile" : "Source check required"}</p><h2 id="profile-name">${person.name}</h2><p>${person.role}</p><p>${person.status === "seeded" ? "Two public-source links are attached. The agent keeps its reasoning and uncertainty visible." : "The links look valid, but this browser demo cannot read platform content without a permitted source adapter."}</p><button class="close-profile" type="button" data-close-profile>Close profile</button></aside><div class="profile-content"><div class="profile-tabs" role="tablist" aria-label="${person.name} profile sections"><button type="button" role="tab" aria-selected="${tab === "profile"}" data-tab="profile">Profile</button><button type="button" role="tab" aria-selected="${tab === "date"}" data-tab="date">Agent date</button><button type="button" role="tab" aria-selected="${tab === "rankings"}" data-tab="rankings">Rankings</button><button type="button" role="tab" aria-selected="${tab === "sources"}" data-tab="sources">Sources</button></div>${tabContent[tab]}</div></div>`;
+  const profileLabel = person.status === "seeded" ? "Seeded demonstration profile" : hasVerifiedSources(person) ? "Verified source pair" : "Source check required";
+  const profileNote = hasVerifiedSources(person) ? "Two public-source links are attached. The agent keeps its reasoning and uncertainty visible." : "This pair stays out of simulations and rankings until its public profiles pass the identity name-match check.";
+  dialogContent.innerHTML = `<div class="profile-shell"><aside class="profile-aside"><p class="eyebrow">${profileLabel}</p><h2 id="profile-name">${person.name}</h2><p>${person.role}</p><p>${profileNote}</p><button class="close-profile" type="button" data-close-profile>Close profile</button></aside><div class="profile-content"><div class="profile-tabs" role="tablist" aria-label="${person.name} profile sections"><button type="button" role="tab" aria-selected="${tab === "profile"}" data-tab="profile">Profile</button><button type="button" role="tab" aria-selected="${tab === "date"}" data-tab="date">Agent date</button><button type="button" role="tab" aria-selected="${tab === "rankings"}" data-tab="rankings">Rankings</button><button type="button" role="tab" aria-selected="${tab === "sources"}" data-tab="sources">Sources</button></div>${tabContent[tab]}</div></div>`;
   dialogContent.querySelectorAll("[data-tab]").forEach(button => button.addEventListener("click", () => renderProfile(person, button.dataset.tab)));
   dialogContent.querySelector("[data-close-profile]").addEventListener("click", () => personDialog.close());
 }
@@ -191,15 +240,16 @@ addForm.addEventListener("submit", async event => {
     const response = await fetch("/api/analyse", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name, linkedin, instagram }) });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(payload.error || "The live source adapter is unavailable on this deployment.");
+    if (!payload.identity?.matched) throw new Error("The public source pair could not pass the identity name-match check.");
     analysis = analysisFromEvidence(payload.evidence);
-    status = "ready";
+    status = "verified";
   } catch (sourceError) {
     analysis = { interests: [], summary: "No analysis is available until a permitted source reader returns evidence from both supplied links.", linkedinEvidence: "Not yet read.", instagramEvidence: "Not yet read.", unknowns: `All compatibility signals remain unknown. ${sourceError.message}` };
   } finally {
     submit.disabled = false;
     submit.textContent = "Check these sources";
   }
-  const record = { id: `person-${Date.now()}`, name, role: status === "ready" ? "Source-backed profile" : "Pending source review", handle: "pending", interests: analysis.interests, energy: status === "ready" ? "curious" : "unknown", summary: analysis.summary, linkedinEvidence: analysis.linkedinEvidence, instagramEvidence: analysis.instagramEvidence, unknowns: analysis.unknowns, linkedin, instagram, status };
+  const record = { id: `person-${Date.now()}`, name, role: status === "verified" ? "Source-backed profile" : "Pending source review", handle: "pending", interests: analysis.interests, energy: status === "verified" ? "curious" : "unknown", summary: analysis.summary, linkedinEvidence: analysis.linkedinEvidence, instagramEvidence: analysis.instagramEvidence, unknowns: analysis.unknowns, linkedin, instagram, status };
   people.unshift(record);
   renderGrid(search.value);
   addForm.reset();
@@ -208,3 +258,4 @@ addForm.addEventListener("submit", async event => {
 });
 
 renderGrid();
+hydrateSeedEvidence();
